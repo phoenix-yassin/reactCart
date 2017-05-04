@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import _ from '../../bower_components/underscore/underscore';
 import img80 from './../img-80.png';
 
 export default class Item extends Component {

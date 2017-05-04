@@ -1,10 +1,7 @@
 import React, { Component } from 'react';
 import List from './components/List';
 import items from './items';
-import _ from '../bower_components/underscore/underscore';
-import '../bower_components/bootstrap/dist/css/bootstrap.min.css';
-import '../bower_components/bootstrap/dist/css/bootstrap-grid.min.css';
-import './Cart.css';
+
 
 export default class Cart extends Component {
 	constructor(props) {
@@ -24,7 +21,7 @@ export default class Cart extends Component {
 	}
 	
 	changeQty(itemId,qty) {
-		var item = _.find(this.state.items, item => item.id === itemId );
+    let item = this.state.items.find( item => item.id === itemId );
 		item.quantity = qty;
 		
 		this.setState({ qtyTotal: this.state.qtyTotal + item.quantity });
@@ -34,17 +31,13 @@ export default class Cart extends Component {
 	}		
 	
 	removeItem(itemId) {
-		var items = _.without(this.state.items, _.findWhere(this.state.items, {
-		  id: itemId
-		}));
+		var items = this.state.items.filter( item => item.id !== itemId )
 		this.setState({ items: items });		
 		this.handleSubTotal();
 	}
 	
-	handleSubTotal = (itemTotal = 0) => {	
-		_.each(this.state.items, function(item){
-			itemTotal += item.price * item.quantity;
-		});
+	handleSubTotal = (itemTotal = 0) => {
+    itemTotal = this.state.items.reduce( (itemTotal, item) => itemTotal += item.price * item.quantity , 0);
 
 		this.setState({ subTotal: itemTotal });
 		this.handleGrandTotal(itemTotal);

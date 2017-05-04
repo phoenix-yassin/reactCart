@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import Item from './Item';
-import _ from '../../bower_components/underscore/underscore';
+
 
 export default class List extends Component {
 	renderItems() {
-		const props = _.omit(this.props, 'items');
+		const props = Object.assign({}, this.props, {items:undefined});
+		const abc = this.props
 		
-		return _.map(this.props.items, (item, index) => <Item key={index} {...item} {...props} />);
+		return this.props.items.map( (item, index) => <Item key={index} {...item} {...props} />);
 	}	
 	
 	render(){
