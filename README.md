@@ -1,9 +1,9 @@
 ## Simple shopping Cart
 I will keep pushing new changes please watch, star and feel free to review and contribute 🙂
 
-- React v15.4.2
-- JSX
-- ES6
+- add webpack build method
+- add redux
+- ES6(doing)
 
 ### Run
 
