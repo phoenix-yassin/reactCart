@@ -1,7 +1,6 @@
 ## Simple shopping Cart
 I will keep pushing new changes please watch, star and feel free to review and contribute 🙂
 
-- add webpack build method
 - add redux
 - ES6(doing)
 
