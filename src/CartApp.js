@@ -1,9 +1,11 @@
 import React, { Component } from 'react';
-import List from './components/List';
-import items from './items';
+import List from './components/CartList';
+import CartAccount from './components/CartAccount'
+import CartHeader from './components/CartHeader'
+import items from './data/items';
 
 
-export default class Cart extends Component {
+export default class CartApp extends Component {
 	constructor(props) {
 		super(props);
 		this.state = {
@@ -23,7 +25,6 @@ export default class Cart extends Component {
 	changeQty(itemId,qty) {
     let item = this.state.items.find( item => item.id === itemId );
 		item.quantity = qty;
-		
 		this.setState({ qtyTotal: this.state.qtyTotal + item.quantity });
 		this.setState({ priceTotal: this.state.priceTotal + item.price });
 		
@@ -59,65 +60,14 @@ export default class Cart extends Component {
 					  <div className="row">
 					    <div className="">
 					      <table className="table table-hover">
-									<thead>
-										<tr>
-											<th>Product</th>
-											<th>Quantity</th>
-											<th className="text-center">Price</th>
-											<th className="text-center">Total</th>
-											<th> </th>
-										</tr>
-									</thead>
-									
+                  <CartHeader/>
 									<List 
 										items={this.state.items} 
 										removeItem={this.removeItem.bind(this)}
 										changeQty={this.changeQty.bind(this)}
 										handleSubTotal={this.handleSubTotal.bind(this)}
 									/>
-
-									<tfoot>
-										<tr>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td>
-												<h5>Subtotal:</h5></td>
-											<td className="text-right">
-												<h5><strong>${this.state.subTotal.toFixed(2)}</strong></h5></td>
-										</tr>
-										<tr>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td>
-												<h5>Tax</h5></td>
-											<td className="text-right">
-												<h5><strong>10%</strong></h5></td>
-										</tr>
-										<tr>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td>
-												<h3>Total</h3></td>
-											<td className="text-right">
-												<h3><strong>${this.state.grandTotal.toFixed(2)}</strong></h3></td>
-										</tr>
-										<tr>
-											<td></td>
-											<td></td>
-											<td></td>
-											<td>
-												<button disabled type="button" className="btn btn-default">
-	                        <span className="glyphicon glyphicon-shopping-cart"></span> Continue Shopping
-	                      </button></td>
-											<td>
-												<button disabled type="button" className="btn btn-success">
-	                        Checkout <span className="glyphicon glyphicon-play"></span>
-	                      </button></td>
-										</tr>									
-									</tfoot>
+									<CartAccount state={this.state}/>
 								</table>
 							</div>
 						</div>

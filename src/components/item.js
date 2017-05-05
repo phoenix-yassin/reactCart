@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import img80 from './../img-80.png';
+import img80 from '../images/img-80.png';
 
 export default class Item extends Component {
 	constructor(props) {
