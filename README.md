@@ -8,8 +8,11 @@ I will keep pushing new changes please watch, star and feel free to review and c
 ### Run
 
 - npm install
-- bower install
 - npm start
+
+
+### Build
+- npm build
 
 ### Demo
 [https://abudayah.github.io/reactCart/](https://abudayah.github.io/reactCart/)
