@@ -4,7 +4,6 @@ import img80 from '../images/img-80.png';
 export default class Item extends Component {
 	constructor(props) {
     super(props);
-		
 		this.state = {
 			itemTotal: 0,
     };

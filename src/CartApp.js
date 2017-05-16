@@ -27,7 +27,6 @@ export default class CartApp extends Component {
 		item.quantity = qty;
 		this.setState({ qtyTotal: this.state.qtyTotal + item.quantity });
 		this.setState({ priceTotal: this.state.priceTotal + item.price });
-		
 		this.handleSubTotal();
 	}		
 	
@@ -39,7 +38,6 @@ export default class CartApp extends Component {
 	
 	handleSubTotal = (itemTotal = 0) => {
     itemTotal = this.state.items.reduce( (itemTotal, item) => itemTotal += item.price * item.quantity , 0);
-
 		this.setState({ subTotal: itemTotal });
 		this.handleGrandTotal(itemTotal);
 	}
@@ -60,17 +58,16 @@ export default class CartApp extends Component {
 					  <div className="row">
 					    <div className="">
 					      <table className="table table-hover">
-                  <CartHeader/>
-									<List 
-										items={this.state.items} 
-										removeItem={this.removeItem.bind(this)}
-										changeQty={this.changeQty.bind(this)}
-										handleSubTotal={this.handleSubTotal.bind(this)}
-									/>
-									<CartAccount state={this.state}/>
-								</table>
-							</div>
+                  			<CartHeader/>
+							<List
+								items={this.state.items}
+								removeItem={this.removeItem.bind(this)}
+								changeQty={this.changeQty.bind(this)}
+								handleSubTotal={this.handleSubTotal.bind(this)}/>
+							<CartAccount state={this.state}/>
+						  </table>
 						</div>
+					  </div>
 					</div>
 					<br/>
 					<div className="text-center">
@@ -78,9 +75,8 @@ export default class CartApp extends Component {
 					</div>
 					<br/>
 					<br/>
-	      </div>
-      </div>
-
+	     		 </div>
+      		</div>
     );
   }
 }

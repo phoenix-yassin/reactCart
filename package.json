@@ -27,6 +27,7 @@
     "express": "^4.13.3",
     "file-loader": "^0.11.1",
     "react-scripts": "^0.9.5",
+    "redux-logger": "^3.0.1",
     "style-loader": "^0.17.0",
     "url-loader": "^0.5.8",
     "webpack": "^1.9.11",
