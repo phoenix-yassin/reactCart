@@ -45,13 +45,23 @@ const byId = (state={}, action)=>{
     }
 }
 
-const visibleIds = ()=>{}
+//
+const visibleIds = (state=[],action)=>{
+    switch (action.type){
+        case RECEIVE_ITEMS: action.items.map((item)=> item.id);
+        default: return state;
+    }
+}
 
 export default combineReducers(
     byId,
     visibleIds
 )
 
-export const getItem = ()=>{}
+export const getItem = (state, id)=>{
+    return state.byId[id];
+}
 
-export const getVisibleItems = ()=>{}
+export const getVisibleItems = (state)=>{
+    return state.visibleIds.map((id)=> getItem(state,id))
+}

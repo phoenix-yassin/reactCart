@@ -9,7 +9,7 @@ import './css/index.css';
 import { createStore, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk'
-import createLogger from 'redux-logger';
+import {createLogger} from 'redux-logger';
 
 import reducer from './reducers';
 import App from './CartApp';
