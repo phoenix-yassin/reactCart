@@ -3,10 +3,11 @@ import img80 from '../images/img-80.png';
 
 export default class Item extends Component {
 	constructor(props) {
-    super(props);
-		this.state = {
-			itemTotal: 0,
-    };
+		super(props);
+			this.state = {
+				itemTotal: 0,
+		};
+
 	}
 	
 	getInitialState(){
@@ -23,6 +24,7 @@ export default class Item extends Component {
 	}
 	
 	render(){
+        const itemVal = this.props.item;
 	  return (
 			<tr>
 				<td className="col-sm-8 col-md-6">
@@ -31,22 +33,26 @@ export default class Item extends Component {
 							<img src={img80} alt="item" />
 						</a>
 						<div className="media-body">
-							<h5 className="media-heading"><a href="#">{this.props.name}</a></h5>
-							<p className="media-heading"> by <a href="#">{this.props.brand}</a></p>
+							<h5 className="media-heading"><a href="#">{itemVal.name}</a></h5>
+							<p className="media-heading"> by <a href="#">{itemVal.brand}</a></p>
 						</div>
 					</div>
 				</td>
 				<td className="col-sm-1 col-md-1">
-					<input type="number" className="form-control" min="1" max={this.props.limit} value={this.props.quantity} onChange={this.handleChange.bind(this, this.props.id)} />
+					<input type="number" className="form-control" min="1" max={itemVal.limit} value={itemVal.quantity} onChange={(e) => {
+					  this.props.modifyItem(e.target.value)
+            //console.log('quantity: ' + e.target.value);
+					}
+					}/>
 				</td>
 				<td className="col-sm-1 col-md-1 text-center">
-					<strong className="itemPrice">${this.props.price.toFixed(2)}</strong>				
+					<strong className="itemPrice">{}</strong>
 				</td>
 				<td className="col-sm-1 col-md-1 text-center">
-					<strong className="itemTotal">${this.state.itemTotal.toFixed(2)}</strong>	
+					<strong className="itemTotal"></strong>
 				</td>
 				<td className="col-sm-1 col-md-1">
-					<button type="button" className="btn btn-danger" onClick={this.props.removeItem.bind(this, this.props.id)}>
+					<button type="button" className="btn btn-danger" onClick={()=>{}}>
 							<span className="glyphicon glyphicon-remove"></span> Remove
 					</button>	
 				</td>

@@ -12,7 +12,8 @@ import thunk from 'redux-thunk'
 import {createLogger} from 'redux-logger';
 
 import reducer from './reducers';
-import App from './CartApp';
+//import App from './CartApp';
+import App from './containers/App'
 import { getAllItems } from './actions';
 
 const logger = createLogger();
@@ -23,6 +24,7 @@ const store = createStore(
 );
 
 store.dispatch(getAllItems())
+console.log(JSON.stringify(store.getState()))
 
 ReactDOM.render(
     <Provider store={store}>

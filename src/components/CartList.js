@@ -1,19 +1,11 @@
 import React, { Component } from 'react';
-import Item from './Item';
 
-
-export default class List extends Component {
-	renderItems() {
-		const props = Object.assign({}, this.props, {items:undefined});
-
-		return this.props.items.map( (item, index) => <Item key={index} {...item} {...props} />);
-	}	
-	
+export default class CartList extends Component {
 	render(){
 	  return (
 	    <tbody>
-				{this.renderItems()}
-	    </tbody>
+		  {this.props.children}
+		</tbody>
 	  );
 	}
 }

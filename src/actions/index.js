@@ -4,15 +4,16 @@
 import shop from '../data/shop'
 import * as type from '../constants/constants'
 
-const receiveItems = (items) =>{
-    type: type.RECEIVE_ITEMS
+const receiveItems = (items) => ({
+    type: type.RECEIVE_ITEMS,
     items: items
-}
+});
 
-export const getAllItems = () => (dispatch) => {
+export const getAllItems = () => dispatch => {
     shop.getItems( items => {
+        console.log('getAllItems..' + JSON.stringify(items));
         dispatch(receiveItems(items));
-    }, 1000)
+    }, 100)
 }
 
 const addToCartUnsafe = itemId => ({
@@ -20,9 +21,10 @@ const addToCartUnsafe = itemId => ({
     itemId
 })
 
-export const addToCart = (itemId) => (dispatch, getState) => {
+export const modifyCart = (itemId, qty) => (dispatch, getState) => {
+  debugger;
     if(getState().items.byId[itemId].inventory > 0){
-        dispatch(addToCart(itemId))
+        dispatch(addToCartUnsafe(itemId))
     }
 }
 

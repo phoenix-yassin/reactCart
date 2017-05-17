@@ -4,12 +4,12 @@
 
 import React from 'react';
 
-import List from './List';
-import CartAccount from './CartAccount';
+import ListContainer from './ListContainer';
+import CartAccountContainer from './CartAccountContainer';
 
 import CartHeader from '../components/CartHeader'
 
-export default  App = () => {
+const App = () => {
     return (
         <div className="Cart">
             <div className="container">
@@ -22,12 +22,8 @@ export default  App = () => {
                         <div className="">
                             <table className="table table-hover">
                                 <CartHeader/>
-                                <List
-                                    items={this.state.items}
-                                    removeItem={this.removeItem.bind(this)}
-                                    changeQty={this.changeQty.bind(this)}
-                                    handleSubTotal={this.handleSubTotal.bind(this)}/>
-                                <CartAccount state={this.state}/>
+                                <ListContainer/>
+                                <CartAccountContainer/>
                             </table>
                         </div>
                     </div>
@@ -41,3 +37,5 @@ export default  App = () => {
         </div>
     );
 }
+
+export default App;

@@ -12,7 +12,7 @@ app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output
 app.use(webpackHotMiddleware(compiler));
 
 app.get("/", function(req, res) {
-  console.log(__dirname);
+  console.log(new Date());
   res.sendFile(__dirname + '/index.html')
 });
 

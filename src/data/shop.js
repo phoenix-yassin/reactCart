@@ -7,6 +7,6 @@ import _items from './items'
 const TIMEOUT = 200
 
 export default {
-    getItems: (cb, timeout)=> setTimeout(()=>cb(_items), timeout || TIMEOUT ),
+    getItems: (cb, timeout)=> {setTimeout(()=>cb(_items), timeout || TIMEOUT )},
     buyItems: (items, cb, timeout) => setTimeout(()=>cb(), timeout || TIMEOUT)
 }
