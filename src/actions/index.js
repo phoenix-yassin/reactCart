@@ -16,15 +16,15 @@ export const getAllItems = () => dispatch => {
     }, 100)
 }
 
-const addToCartUnsafe = itemId => ({
+const addToCartUnsafe = (obj) => ({
     type: type.ADD_TO_CART,
-    itemId
+     ...obj
 })
 
-export const modifyCart = (itemId, qty) => (dispatch, getState) => {
+export const modifyCart = (obj, itemId, qty) => (dispatch, getState) => {
   debugger;
-    if(getState().items.byId[itemId].inventory > 0){
-        dispatch(addToCartUnsafe(itemId))
+    if(getState().items.byId[obj.id].inventory >= obj.qty  && obj.qty >=0  ){
+        dispatch(addToCartUnsafe(obj))
     }
 }
 

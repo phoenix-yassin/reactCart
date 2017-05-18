@@ -13,12 +13,12 @@ const initialState = {
 const addedIds = (state = initialState.addedIds, action) =>{
     switch (action.type){
         case ADD_TO_CART:
-            if(state.indexOf(action.itemId)> -1){
+            if(state.indexOf(action.id)> -1){
                 return state;
             }
             return [
                 ...state,
-                action.itemId
+                action.id
             ]
         default:
             return state;
@@ -31,7 +31,7 @@ const  quantityById = (state = initialState.quantityById, action) =>{
             const {itemId} = action;
             return {
                 ...state,
-                [itemId]: (state[itemId] || 0 ) + 1
+                [id]: {qty: state[id].qty || 0, inventory: 0 }
             }
         default:
             return state;

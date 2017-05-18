@@ -14,7 +14,7 @@ const ListContainer = ({ items, modifyCart }) => {
         <CartList>
         { items.map( item =>
             <Item key={item.id} item={item} modifyItem={
-                (qty)=> modifyCart(item.id,qty) } />
+                (obj)=> modifyCart(obj) } />
           )}
         </CartList>
     );

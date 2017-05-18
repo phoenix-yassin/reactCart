@@ -15,7 +15,7 @@ const products = (state, action) =>{
         case ADD_TO_CART:
             return {
                 ...state,
-                inventory: state.inventory - 1
+                inventory: state.inventory - action.qty
             }
         default:
             return state;
@@ -48,16 +48,14 @@ const byId = (state={}, action)=>{
 //
 const visibleIds = (state=[],action)=>{
     switch (action.type){
-        case RECEIVE_ITEMS:
-            return action.items.map(item=> item.id);
+        case RECEIVE_ITEMS: return  action.items.map( item =>item.id);
         default: return state;
     }
 }
 
 export default combineReducers({
     byId,
-    visibleIds
-}
+    visibleIds}
 )
 
 export const getItem = (state, id)=>{

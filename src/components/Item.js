@@ -7,7 +7,7 @@ export default class Item extends Component {
 			this.state = {
 				itemTotal: 0,
 		};
-
+    this.handleChange = this.handleChange.bind(this);
 	}
 	
 	getInitialState(){
@@ -18,11 +18,11 @@ export default class Item extends Component {
 		this.props.handleSubTotal();
 	}
 	
-	handleChange(itemId, e){
-		this.setState({ itemTotal: e.target.value * this.props.price });
-		this.props.changeQty(itemId, e.target.value);
+	handleChange(e){
+	  debugger;
+		this.props.modifyItem({id:this.props.item.id, qty: e.target.value});
 	}
-	
+
 	render(){
         const itemVal = this.props.item;
 	  return (
@@ -39,10 +39,9 @@ export default class Item extends Component {
 					</div>
 				</td>
 				<td className="col-sm-1 col-md-1">
-					<input type="number" className="form-control" min="1" max={itemVal.limit} value={itemVal.quantity} onChange={(e) => {
-					  this.props.modifyItem(e.target.value)
+					<input type="number" className="form-control" min="1" max={itemVal.limit}  value={itemVal.quantity} onChange={
+					  this.handleChange
             //console.log('quantity: ' + e.target.value);
-					}
 					}/>
 				</td>
 				<td className="col-sm-1 col-md-1 text-center">
